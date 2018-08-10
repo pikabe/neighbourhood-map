@@ -1,0 +1,32 @@
+/*global google*/
+import React, { Component } from 'react';
+import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+
+const coordinates = { lat: 51.507351 , lng: -0.127758 }
+// const google=window.google
+
+const Map = withScriptjs(
+  withGoogleMap(
+    () => (
+      <GoogleMap
+        defaultZoom={12}
+        defaultCenter={coordinates}
+      >
+        <InfoBox
+          defaultPosition={new google.maps.LatLng(coordinates.lat, coordinates.lng)}
+          options={{ closeBoxURL: ``, enableEventPropagation: true }}
+        >
+          <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
+            <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
+              Hello, Taipei!
+            </div>
+          </div>
+        </InfoBox>
+        <Marker position={coordinates} />
+      </GoogleMap>
+    )
+  )
+)
+
+export default Map
