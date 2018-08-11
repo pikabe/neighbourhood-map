@@ -50,7 +50,7 @@ chooseLocation = (location) => {
     })
 
     }
-    console.log(this.state.chosenLocation)
+
   }
 
   render() {
@@ -68,13 +68,13 @@ chooseLocation = (location) => {
           locationsList={this.state.locationsCurrent}
           locationsAll= {this.state.locationsAll}
           updateCurrentLocations = {this.updateCurrentLocations}
-          chooseLocation = {this.state.chooseLocation}
+          chooseLocation = {this.chooseLocation}
           />
 {/**/}
           <Map
           googleMapURL={MAPS_URL}
           loadingElement={<div style={{ height: '100%' }} />}
-          containerElement={<div style={{ height: `400px` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           />
 

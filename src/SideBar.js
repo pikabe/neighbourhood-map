@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import ListItem from './ListItem.js'
 
 class SideBar extends Component {
   state={
@@ -17,7 +17,7 @@ class SideBar extends Component {
     let currentLocations = [];
     if ((locations.constructor === Array) && (query.length>0)){
       locations.map(location =>{
-        if (location.a.includes(query)){
+        if (location.a.toUpperCase().includes(query.toUpperCase())){
           currentLocations.push(location)
         }
       }
@@ -29,21 +29,8 @@ class SideBar extends Component {
 
   }
 
-
-  /*BooksAPI.search(query).then((searchResults) => {
-    if (query.length>0) {//checks if searchResults has stored any books
-      this.setState({
-        searchResults
-      })}
-     else {
-      this.setState({
-        searchResults: []
-      })
-    }
-  })*/
-
   render(){
-    console.log(this.filterLocations(this.props.locationsAll,this.state.query))
+    // console.log(this.filterLocations(this.props.locationsAll,this.state.query))
     const styles ={width:'100%',height:'80%'}
     let sideBar = "sideBar " + this.props.toggle
     return(
@@ -57,22 +44,14 @@ class SideBar extends Component {
             <ul>
       {
             (this.props.locationsList.constructor === Array) ?
-                this.props.locationsList.map(location =>
-            <li className="location-sideBar"
-            key={location.a}
-          
+                this.props.locationsList.map((location,index) =>
 
-            > {location.a} </li>
+            <ListItem key={index} chooseLocation={this.props.chooseLocation} chosenLocation={location} allLocations={index} />
+
+
             ):null
           }
           </ul>
-        {/*<div className="location-sideBar"> h1 </div>
-        <div className="location-sideBar"> h1 </div>
-        <div className="location-sideBar"> h1 </div>
-        <div className="location-sideBar"> h1 </div>
-        <div className="location-sideBar"> h1 </div>
-        <div className="location-sideBar"> h1 </div>*/}
-
       </div>
 
 

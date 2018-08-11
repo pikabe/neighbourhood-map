@@ -8,7 +8,7 @@ const coordinates = { lat: 51.507351 , lng: -0.127758 }
 
 const Map = withScriptjs(
   withGoogleMap(
-    () => (
+    (props) => (
       <GoogleMap
         defaultZoom={12}
         defaultCenter={coordinates}
