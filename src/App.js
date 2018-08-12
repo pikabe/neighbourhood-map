@@ -10,8 +10,8 @@ const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=
 
 class App extends Component {
   state={
-    locationsAll:[{a:'hello my'},{a:'name is'},{a:'favourite color'},{a:'hi bye'},{a:'locations'}],
-    locationsCurrent:[{a:'hello my'},{a:'name is'},{a:'favourite color'},{a:'hi bye'},{a:'locations'}],
+    locationsAll:[{a:'hello my',lat:51.507268,lng:-0.16573 },{a:'name is',lat:51.501757,lng:-0.203186},{a:'favourite color',lat:51.536561,lng:-0.038972},{a:'hi bye',lat:51.532692,lng:-0.141995},{a:'locations', lat:51.479108,lng:-0.156498}],
+    locationsCurrent:[{a:'hello my',lat:51.507268,lng:-0.16573 },{a:'name is',lat:51.501757,lng:-0.203186},{a:'favourite color',lat:51.536561,lng:-0.038972},{a:'hi bye',lat:51.532692,lng:-0.141995},{a:'locations', lat:51.479108,lng:-0.156498}],
     sideBarOpen: false,
     chosenLocation:null // note to self, chosen location would be an object.
     // previousSideBarState:true
@@ -76,6 +76,7 @@ chooseLocation = (location) => {
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
+          locationsCurrent={this.state.locationsCurrent}
           />
 
 

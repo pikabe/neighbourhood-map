@@ -13,6 +13,7 @@ const Map = withScriptjs(
         defaultZoom={12}
         defaultCenter={coordinates}
       >
+      {/**/}
         <InfoBox
           defaultPosition={new google.maps.LatLng(coordinates.lat, coordinates.lng)}
           options={{ closeBoxURL: ``, enableEventPropagation: true }}
@@ -23,7 +24,14 @@ const Map = withScriptjs(
             </div>
           </div>
         </InfoBox>
-        <Marker position={coordinates} />
+        {
+          (props.locationsCurrent.constructor === Array) ?
+              props.locationsCurrent.map((location,index) =>
+              <Marker position={{lat:location.lat,
+              lng: location.lng}} />
+          ):null
+        }
+
       </GoogleMap>
     )
   )
