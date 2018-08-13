@@ -8,7 +8,7 @@ import SideBar from './SideBar.js'
 import Map from './Map';
 const MAPS_API_KEY = 'AIzaSyDNxyvaHgIR_s1Ao8ncRA_-_vIyXi6Bnao'
 const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
-
+function gm_authFailure() { <h1> please Check api key </h1>};
 class App extends Component {
   state={
     locationsAll:[{a:'hello my',lat:51.507268,lng:-0.16573 },{a:'name is',lat:51.501757,lng:-0.203186},{a:'favourite color',lat:51.536561,lng:-0.038972},{a:'hi bye',lat:51.532692,lng:-0.141995},{a:'locations', lat:51.479108,lng:-0.156498}],
@@ -73,16 +73,6 @@ chooseLocation = (location) => {
           chosenLocation = {this.state.chosenLocation}
           />
           {/**/}
-
-          {/*<Map
-          googleMapURL={MAPS_URL}
-          loadingElement={<div style={{ height: '100%' }} />}
-          containerElement={<div style={{ height: `100%` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          locationsCurrent={this.state.locationsCurrent}
-          chooseLocation={this.chooseLocation}
-          chosenLocation = {this.state.chosenLocation}
-          />*/}
           <MapContainer
           locationsCurrent={this.state.locationsCurrent}
           chooseLocation={this.chooseLocation}

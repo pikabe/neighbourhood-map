@@ -14,7 +14,7 @@ class ListItem extends Component {
 
     return(
 
-      <li className="location-sideBar" tabindex={0}
+      <li className="location-sideBar" tabIndex={0}
       onClick={this.updateClickedLocation}
       > {this.props.chosenLocation.a} </li>
 

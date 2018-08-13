@@ -25,6 +25,11 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <script>
+    window.gm_authFailure = function() {
+     alert('Map failed to load.This could be due to,\n 1) Api key error. (Please check you google maps API key) \n 2) Slow or no internet connection. \n 3) If you have reached your quota for google maps api request');
+    }
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

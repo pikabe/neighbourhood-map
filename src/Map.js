@@ -2,13 +2,17 @@
 import React, { Component,Fragment } from 'react';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+import styles from "./App.css"
+import GoogleMapLoader from "react-google-maps-loader"
 
 const coordinates = { lat: 51.507351 , lng: -0.127758 }
+
 // const google=window.google
 
 const Map = withScriptjs(
   withGoogleMap(
     (props) => (
+      <div className={styles.MapContainer}>
       <GoogleMap
         defaultZoom={12}
         defaultCenter={coordinates}
@@ -34,9 +38,9 @@ const Map = withScriptjs(
               defaultPosition={new google.maps.LatLng({lat:location.lat, lng:location.lng})}
               options={{ closeBoxURL: ``, enableEventPropagation: true }}
             >
-              <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
+              <div style={{ backgroundColor: `#FF00FF`, opacity: 0.75, padding: `12px` }}>
                 <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-                  Hello, Taipei!
+                  {location.a}
                 </div>
               </div>
             </InfoBox>
@@ -55,6 +59,7 @@ const Map = withScriptjs(
         }
 
       </GoogleMap>
+      </div>
     )
   )
 )

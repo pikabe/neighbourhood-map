@@ -5,7 +5,9 @@ const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=
 
 class MapContainer extends Component {
   render(){
+    console.log(this.props)
     return(
+      <div className='map-container'>
       <Map
       googleMapURL={MAPS_URL}
       loadingElement={<div style={{ height: '100%' }} />}
@@ -15,6 +17,7 @@ class MapContainer extends Component {
       chooseLocation={this.props.chooseLocation}
       chosenLocation = {this.props.chosenLocation}
       />
+      </div>
     )
   }
 
