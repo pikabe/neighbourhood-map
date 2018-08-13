@@ -25,10 +25,27 @@ const Map = withScriptjs(
           </div>
         </InfoBox>
         {
-          (props.locationsCurrent.constructor === Array) ?
+           (props.locationsCurrent.constructor === Array) ?
+
               props.locationsCurrent.map((location,index) =>
+              (location === props.chosenLocation)?
               <Marker position={{lat:location.lat,
-              lng: location.lng}} />
+              lng: location.lng}
+            } key={index}
+            onClick={()=>props.chooseLocation(location)}
+            tabindex={0}
+            animation={google.maps.Animation.BOUNCE}
+            style={{ color: `yellow` }}
+
+            />:<Marker position={{lat:location.lat,
+            lng: location.lng}
+          } key={index}
+          onClick={()=>props.chooseLocation(location)}
+          tabindex={0}
+          style={{ color: `yellow` }}
+
+          />
+
           ):null
         }
 

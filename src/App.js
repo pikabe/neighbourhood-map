@@ -1,6 +1,7 @@
 /*global google*/
 import React, { Component } from 'react';
 import './App.css';
+import MapContainer from './MapContainer.js'
 
 import SideBarToggle from './SideBarToggle'
 import SideBar from './SideBar.js'
@@ -69,15 +70,24 @@ chooseLocation = (location) => {
           locationsAll= {this.state.locationsAll}
           updateCurrentLocations = {this.updateCurrentLocations}
           chooseLocation = {this.chooseLocation}
+          chosenLocation = {this.state.chosenLocation}
           />
-{/**/}
-          <Map
+          {/**/}
+
+          {/*<Map
           googleMapURL={MAPS_URL}
           loadingElement={<div style={{ height: '100%' }} />}
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           locationsCurrent={this.state.locationsCurrent}
-          />
+          chooseLocation={this.chooseLocation}
+          chosenLocation = {this.state.chosenLocation}
+          />*/}
+          <MapContainer
+          locationsCurrent={this.state.locationsCurrent}
+          chooseLocation={this.chooseLocation}
+          chosenLocation = {this.state.chosenLocation}
+           />
 
 
         </div>
