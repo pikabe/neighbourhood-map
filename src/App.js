@@ -60,7 +60,7 @@ chooseLocation = (location) => {
       <div className="App" style={{height:'100%',width:'100%'}}>
           <header className="App-header">
             {/* <img src={logo} className="App-logo" alt="logo" /> */}
-            <h1 className="App-title">Welcome to React</h1>
+            <h1 className="App-title">London</h1>
             <nav className="nav"><SideBarToggle handleTogglesideBar={this.handleTogglesideBar}/></nav>
 
 

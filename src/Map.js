@@ -1,5 +1,5 @@
 /*global google*/
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 
@@ -14,21 +14,13 @@ const Map = withScriptjs(
         defaultCenter={coordinates}
       >
       {/**/}
-        <InfoBox
-          defaultPosition={new google.maps.LatLng(coordinates.lat, coordinates.lng)}
-          options={{ closeBoxURL: ``, enableEventPropagation: true }}
-        >
-          <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
-            <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-              Hello, Taipei!
-            </div>
-          </div>
-        </InfoBox>
+
         {
            (props.locationsCurrent.constructor === Array) ?
 
               props.locationsCurrent.map((location,index) =>
               (location === props.chosenLocation)?
+              <Fragment>
               <Marker position={{lat:location.lat,
               lng: location.lng}
             } key={index}
@@ -37,7 +29,20 @@ const Map = withScriptjs(
             animation={google.maps.Animation.BOUNCE}
             style={{ color: `yellow` }}
 
-            />:<Marker position={{lat:location.lat,
+            />
+            <InfoBox
+              defaultPosition={new google.maps.LatLng({lat:location.lat, lng:location.lng})}
+              options={{ closeBoxURL: ``, enableEventPropagation: true }}
+            >
+              <div style={{ backgroundColor: `yellow`, opacity: 0.75, padding: `12px` }}>
+                <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
+                  Hello, Taipei!
+                </div>
+              </div>
+            </InfoBox>
+            </Fragment>
+
+            :<Marker position={{lat:location.lat,
             lng: location.lng}
           } key={index}
           onClick={()=>props.chooseLocation(location)}
