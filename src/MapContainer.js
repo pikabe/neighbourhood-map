@@ -8,13 +8,6 @@ class MapContainer extends Component {
   state={
     address:[]
   }
-  setData = (data) =>{
-    if (data){
-       this.setState({address:data}
-    } else {
-      this.setState({address:['Address unavailable']}
-    }
-  }
 
 
 
@@ -39,8 +32,8 @@ class MapContainer extends Component {
 
 
   render(){
-
-
+    let address = this.fetchAddress();
+    console.log(address)
     return(
       <div className='map-container'>
       <Map
