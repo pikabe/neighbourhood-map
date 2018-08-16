@@ -40,6 +40,7 @@ class SideBar extends Component {
               placeholder="Search Location"
               value={this.state.query}
               onChange={(event) => this.updateQuery(event.target.value)}
+              tabIndex={0}
             />
             <ul>
       {

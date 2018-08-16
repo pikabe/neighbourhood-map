@@ -2,10 +2,45 @@ import React, { Component } from 'react';
 import Map from './Map';
 const MAPS_API_KEY = 'AIzaSyDNxyvaHgIR_s1Ao8ncRA_-_vIyXi6Bnao'
 const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
-
+const FOURSQUARE_CLIENT_ID = 'TUPY2JGNHMABCSHZVXG1CJMSEKO0XUOXDEPTTMVMSOSUCZBJ'
+const FOURSQUARE_CLIENT_SECRET = 'CULNR0XDCCUO4FRHXB2CD54A33CVVLNXMDBA4ZHULJJFKFZ2'
 class MapContainer extends Component {
+  state={
+    address:[]
+  }
+  setData = (data) =>{
+    if (data){
+       this.setState({address:data}
+    } else {
+      this.setState({address:['Address unavailable']}
+    }
+  }
+
+
+
+  fetchAddress = () => {
+    if (this.props.chosenLocation){
+      return fetch(`https://api.foursquare.com/v2/venues/search?ll=${this.props.chosenLocation.lat},${this.props.chosenLocation.lng}&limit=3&client_id=${FOURSQUARE_CLIENT_ID}&client_secret=${FOURSQUARE_CLIENT_SECRET}&v=20180814`)
+                    .then(response => response.json())
+                    .then(data => data.response.venues[0].location.formattedAddress)
+                    .then(data => this.setState({address:data}))
+
+
+                    // .then(this.formattedAddress)
+                    .catch(error => console.log(error))
+    }else {
+      return <li>Address unavailable</li>
+    }
+
+  }
+
+
+
+
+
   render(){
-    console.log(this.props)
+
+
     return(
       <div className='map-container'>
       <Map
@@ -16,6 +51,8 @@ class MapContainer extends Component {
       locationsCurrent={this.props.locationsCurrent}
       chooseLocation={this.props.chooseLocation}
       chosenLocation = {this.props.chosenLocation}
+      address = {this.state.address}
+
       />
       </div>
     )

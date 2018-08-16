@@ -5,7 +5,7 @@ import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import styles from "./App.css"
 import GoogleMapLoader from "react-google-maps-loader"
 
-const coordinates = { lat: 51.507351 , lng: -0.127758 }
+const coordinates = { lat: 51.507351 , lng: -0.167758 }
 
 // const google=window.google
 
@@ -24,23 +24,26 @@ const Map = withScriptjs(
 
               props.locationsCurrent.map((location,index) =>
               (location === props.chosenLocation)?
-              <Fragment>
+              <Fragment key={index}>
               <Marker position={{lat:location.lat,
               lng: location.lng}
             } key={index}
             onClick={()=>props.chooseLocation(location)}
             tabindex={0}
             animation={google.maps.Animation.BOUNCE}
-            style={{ color: `yellow` }}
 
             />
             <InfoBox
               defaultPosition={new google.maps.LatLng({lat:location.lat, lng:location.lng})}
               options={{ closeBoxURL: ``, enableEventPropagation: true }}
+              tabIndex={0}
             >
               <div style={{ backgroundColor: `#FF00FF`, opacity: 0.75, padding: `12px` }}>
                 <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-                  {location.a}
+                  <li>location.a</li>
+                  
+
+
                 </div>
               </div>
             </InfoBox>

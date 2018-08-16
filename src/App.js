@@ -8,11 +8,11 @@ import SideBar from './SideBar.js'
 import Map from './Map';
 const MAPS_API_KEY = 'AIzaSyDNxyvaHgIR_s1Ao8ncRA_-_vIyXi6Bnao'
 const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
-function gm_authFailure() { <h1> please Check api key </h1>};
+
 class App extends Component {
   state={
-    locationsAll:[{a:'hello my',lat:51.507268,lng:-0.16573 },{a:'name is',lat:51.501757,lng:-0.203186},{a:'favourite color',lat:51.536561,lng:-0.038972},{a:'hi bye',lat:51.532692,lng:-0.141995},{a:'locations', lat:51.479108,lng:-0.156498}],
-    locationsCurrent:[{a:'hello my',lat:51.507268,lng:-0.16573 },{a:'name is',lat:51.501757,lng:-0.203186},{a:'favourite color',lat:51.536561,lng:-0.038972},{a:'hi bye',lat:51.532692,lng:-0.141995},{a:'locations', lat:51.479108,lng:-0.156498}],
+    locationsAll:[{a:'Big Ben (Elizabeth Tower)',lat:51.50062,lng:-0.124578 },{a:'Lord\'s Cricket Ground (MCC)',lat:51.529411544586594,lng:-0.17269134521484375},{a:'Royal Albert Hall',lat:51.50112589677719,lng:-0.177406419278454},{a:'National Gallery',lat:51.50887601013219,lng:-0.1284778118133545},{a:'Primrose Hill', lat:51.53898536886534,lng:-0.1600673353931939}],
+    locationsCurrent:[{a:'Big Ben (Elizabeth Tower)',lat:51.50062,lng:-0.124578 },{a:'Lord\'s Cricket Ground (MCC)',lat:51.529411544586594,lng:-0.17269134521484375},{a:'Royal Albert Hall',lat:51.50112589677719,lng:-0.177406419278454},{a:'National Gallery',lat:51.50887601013219,lng:-0.1284778118133545},{a:'Primrose Hill', lat:51.53898536886534,lng:-0.1600673353931939}],
     sideBarOpen: false,
     chosenLocation:null // note to self, chosen location would be an object.
     // previousSideBarState:true

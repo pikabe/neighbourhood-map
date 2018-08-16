@@ -122,8 +122,14 @@ nav{
   .sideBar {
     box-shadow:none;
   }
+  .map-container {
+    width: 100%;
+    
+    /* float: right; */
+  }
 
 }
+
 
 
 
