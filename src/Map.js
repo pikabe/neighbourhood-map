@@ -3,65 +3,66 @@ import React, { Component,Fragment } from 'react';
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps';
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import styles from "./App.css"
-import GoogleMapLoader from "react-google-maps-loader"
+import Infobox from "./Infobox.js"
 
-const coordinates = { lat: 51.507351 , lng: -0.167758 }
+
+const coordinates = { lat: 51.507351 , lng: -0.169758 }
 
 // const google=window.google
 
 const Map = withScriptjs(
   withGoogleMap(
     (props) => (
-      <div className={styles.MapContainer}>
-      <GoogleMap
-        defaultZoom={12}
-        defaultCenter={coordinates}
-      >
-      {/**/}
+      <div className={styles.MapContainer} role="application">
+        <GoogleMap
+          defaultZoom={12}
+          defaultCenter={coordinates}
+          options={{
+            fullscreenControl: true ,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.TOP_RIGHT
+              },
+            fullscreenControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+              }
+             }}
+        >
+          {
+             (props.locationsCurrent.constructor === Array) ?
 
-        {
-           (props.locationsCurrent.constructor === Array) ?
+                props.locationsCurrent.map((location,index) =>
+                  (location === props.chosenLocation)?
+                    <Fragment key={index}>
+                      <Marker
+                        position={{
+                        lat:location.lat,
+                        lng: location.lng
+                        }}
+                        key={index}
+                        onClick={()=>props.chooseLocation(location)}
+                        tabindex={0}
+                        animation={google.maps.Animation.BOUNCE}
+                      />
 
-              props.locationsCurrent.map((location,index) =>
-              (location === props.chosenLocation)?
-              <Fragment key={index}>
-              <Marker position={{lat:location.lat,
-              lng: location.lng}
-            } key={index}
-            onClick={()=>props.chooseLocation(location)}
-            tabindex={0}
-            animation={google.maps.Animation.BOUNCE}
+                    <Infobox chosenLocation={location} google={google} />
+                   </Fragment>
+                :
+                <Marker
+                  position={{
+                    lat:location.lat,
+                    lng: location.lng
+                  }}
+                  key={index}
+                  onClick={()=>props.chooseLocation(location)}
+                  tabindex={0}
+                  style={{ color: `yellow` }}
 
-            />
-            <InfoBox
-              defaultPosition={new google.maps.LatLng({lat:location.lat, lng:location.lng})}
-              options={{ closeBoxURL: ``, enableEventPropagation: true }}
-              tabIndex={0}
-            >
-              <div style={{ backgroundColor: `#FF00FF`, opacity: 0.75, padding: `12px` }}>
-                <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-                  <li>location.a</li>
-                  
+                  />
+            ):null
+          }
 
-
-                </div>
-              </div>
-            </InfoBox>
-            </Fragment>
-
-            :<Marker position={{lat:location.lat,
-            lng: location.lng}
-          } key={index}
-          onClick={()=>props.chooseLocation(location)}
-          tabindex={0}
-          style={{ color: `yellow` }}
-
-          />
-
-          ):null
-        }
-
-      </GoogleMap>
+        </GoogleMap>
       </div>
     )
   )
