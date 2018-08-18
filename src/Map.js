@@ -45,7 +45,12 @@ const Map = withScriptjs(
                         animation={google.maps.Animation.BOUNCE}
                       />
 
-                    <Infobox chosenLocation={location} google={google} address={props.address}/>
+                    <Infobox
+                    chosenLocation={location}
+                    google={google}
+                    address={props.address}
+                    chosenLocation= {props.chosenLocation}
+                    />
                    </Fragment>
                 :
                 <Marker
