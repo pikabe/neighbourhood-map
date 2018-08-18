@@ -3,19 +3,27 @@ import Map from './Map';
 const MAPS_API_KEY = 'AIzaSyDNxyvaHgIR_s1Ao8ncRA_-_vIyXi6Bnao'
 const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=3.exp&libraries=geometry,drawing,places`
 const FOURSQUARE_CLIENT_ID = 'TUPY2JGNHMABCSHZVXG1CJMSEKO0XUOXDEPTTMVMSOSUCZBJ'
-const FOURSQUARE_CLIENT_SECRET = 'CULNR0XDCCUO4FRHXB2CD54A33CVVLNXMDBA4ZHULJJFKFZ2'
-
+const FOURSQUARE_CLIENT_SECRET ='CULNR0XDCCUO4FRHXB2CD54A33CVVLNXMDBA4ZHULJJFKFZ2'
+//
+// ''
 class MapContainer extends Component {
   state={
     address:[],
   }
 
+  handleFetchError = (error) => {
+    alert('Location Address unavailable. This could be due to,\n 1)Incorrect client_id or client_secret credential for foursquare API.\n 2)Offline/Slow internet connection\n3)The quota for the location requests have been exceeded.  ');document.querySelector('.infoBoxContent').focus()
+    return [['Address unavailable']]
+  }
+
   getData = (data) => {
-    if (data.response.venues){
-      return data.response.venues[0].location.formattedAddress
+    let arrayAddress = [];
+    if (data) {
+      arrayAddress.push(data)
     } else {
-      return ['Address unavailable']
+      arrayAddress.push(['Address unavailable'])
     }
+    return arrayAddress
   }
 
   fetchAddress = () => {
@@ -24,10 +32,10 @@ class MapContainer extends Component {
                     .catch(error =>  {alert('quota exceeded');document.querySelector('.infoBoxContent').focus()})
                     .then(response => response.json())
                     .then(data => data.response.venues[0].location.formattedAddress)
-                    // .then(data => this.setState({address:data}))
-                    .then(data => console.log(data))
+                    // .then(data => data)
                     // .then(this.formattedAddress)
-                    .catch(error => {alert('quota exceeded');document.querySelector('.infoBoxContent').focus()})
+                    .catch(this.handleFetchError)
+                    // .catch(error => {alert('quota exceeded');document.querySelector('.infoBoxContent').focus()})
     }else {
       return ['Address unavailable']
     }
@@ -35,8 +43,9 @@ class MapContainer extends Component {
 
 
   render(){
-    let address = this.fetchAddress();
-    console.log(this.state.address)
+    let address = this.fetchAddress()[0];
+    // let address = this.state.address
+    console.log(address)
     return(
       <div className='map-container' role="application">
         <Map
@@ -47,7 +56,7 @@ class MapContainer extends Component {
           locationsCurrent={this.props.locationsCurrent}
           chooseLocation={this.props.chooseLocation}
           chosenLocation = {this.props.chosenLocation}
-          address = {this.state.address}
+          address = {address}
         />
       </div>
     )

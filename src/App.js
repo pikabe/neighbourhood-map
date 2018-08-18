@@ -67,6 +67,7 @@ chooseLocation = (location) => {
           <SideBarToggle handleTogglesideBar={this.handleTogglesideBar}/>
         </header>
 
+
         <SideBar toggle={navClasses}
           locationsList={this.state.locationsCurrent} //locations currently applicable to user
           locationsAll= {this.state.locationsAll} //default locations if no user input
@@ -76,7 +77,8 @@ chooseLocation = (location) => {
           sideBarOpen = {this.state.sideBarOpen}
           openSideBar = {this.openSideBar}
         />
-          
+        
+
         <MapContainer
           locationsCurrent={this.state.locationsCurrent}
           chooseLocation={this.chooseLocation}

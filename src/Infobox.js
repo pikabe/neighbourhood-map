@@ -29,13 +29,9 @@ class Infobox extends Component {
         >
           <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
             <ul>
-            {/*
-              (this.props.address === Array) ?
-              this.props.address.map((addressLine,index) =>
-              <li>{addressLine}</li>
-                        ):null
+          
 
-            */}
+
             </ul>
           </div>
         </div>

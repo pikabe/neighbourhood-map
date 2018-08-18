@@ -55,7 +55,7 @@ class SideBar extends Component {
     let tabIndex = this.tabIndex(this.props.openSideBar);
 
     return(
-      <div className={sideBar} >
+      <nav className={sideBar} >
         <input className="input"
           type="text"
           placeholder="Search Location"
@@ -77,7 +77,7 @@ class SideBar extends Component {
             ):null
           }
           </ul>
-      </div>
+      </nav>
       );
   }
 }
