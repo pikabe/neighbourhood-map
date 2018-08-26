@@ -18,7 +18,7 @@ class SideBar extends Component {
     let currentLocations = [];
     if ((locations.constructor === Array) && (query.length > 0)) {
       locations.map(location => {
-        if (location.a.toUpperCase().includes(query.toUpperCase())) {
+        if (location.title.toUpperCase().includes(query.toUpperCase())) {
           currentLocations.push(location)
         }
       })
