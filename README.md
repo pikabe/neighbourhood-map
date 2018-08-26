@@ -42,6 +42,7 @@ To choose a location, click on the name of the location on the sidebar or click 
 To undo this, click on the location again (this will also move the center of the map to the default center) or to choose another location, click on the new location's name or marker.
 
 On smaller screens click on the hamburger icon appears to hide or display the sidebar.
+
 ![](img/sidebarOpen.PNG)
 
 ![](img/sidebarClose.PNG)
