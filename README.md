@@ -35,11 +35,11 @@ Filter locations using the input provided.
 
 ![](img/input.PNG)
 
-To choose a location, click on the name of the location on the sidebar or click the marker at the location's position on the map. The marker of the chosen location will animate and an infobox will open displaying the address of the chosen location.
+To choose a location, click on the name of the location on the sidebar or click the marker at the location's position on the map. The center of the map would be changed to the coordinate of the location on the map. The marker of the chosen location will animate and an infobox will open displaying the address of the chosen location.
 
 ![](img/chooseLocation.PNG)
 
-To undo this, click on the location again or to choose another location, click on the new location's name or marker.
+To undo this, click on the location again or to choose another location, click on the new location's name or marker, this will also move the center of the map to the default center.
 
 On smaller screens click on the hamburger icon appears to hide or display the sidebar.
 ![](img/sidebarOpen.PNG)
