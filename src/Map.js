@@ -17,6 +17,7 @@ const Map = withScriptjs(
         <GoogleMap
           defaultZoom={12}
           defaultCenter={coordinates}
+          center={props.currentCenter}
           options={{
             fullscreenControl: true ,
             mapTypeControlOptions: {
@@ -50,6 +51,7 @@ const Map = withScriptjs(
                     google={google}
                     address={props.address}
                     chosenLocation= {props.chosenLocation}
+                    openSideBar = {props.openSideBar}
                     />
                    </Fragment>
                 :

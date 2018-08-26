@@ -10,6 +10,10 @@ class Infobox extends Component {
   }
   componentDidMount() {
     this.fetchAddress()
+    if (this.props.chooseLocation){
+      document.querySelector('.infoBoxContent').focus()
+    }
+
   }
 
   fetchAddress= () =>{
@@ -19,7 +23,7 @@ class Infobox extends Component {
                 .then(data =>this.setState({address:data}))
 
                 // .then(this.formattedAddress)
-                .catch(data => this.setState({address:['unavailable']}))
+                .catch(data => this.setState({address:['Address unavailable']}))
                 // .catch(error => {alert('quota exceeded');document.querySelector('.infoBoxContent').focus()})
 }
 
@@ -33,21 +37,17 @@ class Infobox extends Component {
     this.setState({address:['Address unavailable']})
   }
 
-  getData = (data) => {
-  console.log(data)
-  console.log(typeof data)
-  }
+
 
   keyPressFunction = (e) => {
     if ((e.key === 'Enter') || (e.key === 'tab')) {
       if (document.querySelector('.chosen')) {
+        this.props.openSideBar()
         document.querySelector('.chosen').focus()
       }
     }
   }
-  focusInfoBox() {
-  this.box.focus();
-  }
+
   render(){
     console.log(this.state.address)
     return(
@@ -57,17 +57,32 @@ class Infobox extends Component {
       >
         <div
           style={{ backgroundColor: `#FF00FF`,
-          opacity: 0.75, padding: `12px` }}
-          className="infoBoxContent" tabIndex={0}
-          aria-label="infobox"
-          onKeyPress={this.keyPressFunction}
-          ref={(div) => this.InfoBox = div}
-          onClick={() => {this.InfoBox.focus()}}
+          opacity: 0.75, padding: `12px`,width:`auto` }}
+
         >
-          <div style={{ fontSize: `16px`, fontColor: `#08233B` }}>
-            <ul>
+          <div style={{ fontSize: `16px`, fontColor: `#08233B`,width:`auto` }}>
+            <ul
+            className="infoBoxContent"
+            tabIndex={0}
+            aria-label="infobox"
+            onKeyPress={this.keyPressFunction}
+            ref={(ul) => { this.infoBoxContent = ul }}
 
+            >
+             <li className="title"> {this.props.chosenLocation.title} </li>
+            {
+              (this.state.address === ['Address unavailable'])?
+              <React.Fragment>
 
+              <li> Address unavailable </li>
+              </React.Fragment>
+              :
+
+              this.state.address.map((line,index) =>
+              <li key={index}> {line} </li>
+
+              )
+            }
 
             </ul>
           </div>

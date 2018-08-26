@@ -5,11 +5,8 @@ const MAPS_URL = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=
 2
 class MapContainer extends Component {
   state={
-    address:[],
+    currentCenter:[],
   }
-
-  
-
 
   render(){
 
@@ -26,6 +23,8 @@ class MapContainer extends Component {
           chooseLocation={this.props.chooseLocation}
           chosenLocation = {this.props.chosenLocation}
           address = {address}
+          currentCenter= {this.props.currentCenter}
+          openSideBar = {this.props.openSideBar}
         />
       </div>
     )

@@ -32,7 +32,7 @@ class ListItem extends Component {
         onClick={this.updateClickedLocation}
         onKeyPress={this.keyPressFunction}
       >
-        {this.props.chosenLocation.a}
+        {this.props.chosenLocation.title}
 
       </li>
     );

@@ -54,11 +54,7 @@ html, body {
   }
 }
 
-nav {
-  float: left;
-  padding-left: 0;
-  padding-bottom: 0;
-}
+/* sideBar */
 
 .toggle-SideBar {
   /* background-color: black; */
@@ -135,6 +131,7 @@ nav {
   height: 50px;
   border-color: # 191970;
 }
+/* map */
 
 .map-container {
   height: 85%;
@@ -143,6 +140,16 @@ nav {
   bottom: 0;
   right: 0;
   width: 100%;
+}
+/*infobox*/
+.infobox {
+  width: auto;
+}
+.infoBoxContent{
+  list-style-type: none;
+}
+.title{
+  text-decoration: underline
 }
 
 @media screen and (min-width:850px) {

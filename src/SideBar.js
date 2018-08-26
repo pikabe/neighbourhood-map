@@ -46,10 +46,10 @@ class SideBar extends Component {
   componentDidMount() {
     this.checkWindowWidth();
     window.addEventListener("resize", this.checkWindowWidth.bind(this));
+    // above a certain width, the the sidebar remains open
   }
 
   render(){
-    // console.log(this.filterLocations(this.props.locationsAll,this.state.query))
     const styles ={width:'100%',height:'80%'}
     let sideBar = "sideBar " + this.props.toggle;
     let tabIndex = this.tabIndex(this.props.openSideBar);
