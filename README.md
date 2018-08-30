@@ -6,8 +6,7 @@ To see the live version of the app, click https://pikabe.github.io/neighbourhood
 
 App Description
 ---
-This application allows user to access information about five different locations using the foursquare API.
-The application renders markers at five different locations on a map using the google maps API. The locations can also be accessed using the app's sidebar, which renders the names of the locations. Locations and markers can be filtered using the input provided in the menu and when a location is chosen, an infobox opens at the location's position on the map with details about the chosen location.
+This application allows user to access information (provided by the foursquare API) about five different locations in London. Markers are rendered onto a map(provided by the google maps API) at the coordinates of the locations and a sidebar lists the names of the locations. Each location's information can be accessed by clicking on the markers which are rendered on the map (rendered using the google maps API) at the coordinates of the Locations and markers can be filtered using the input provided in the sidebar and when a location is chosen, an infobox opens at the location's position on the map with information about the chosen location.
 
 Installation and Configuration
 ---
